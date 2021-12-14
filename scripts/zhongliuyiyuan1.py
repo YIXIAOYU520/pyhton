@@ -5,7 +5,7 @@ from api.zhongliuyiyuan import Api
 from parameterized import parameterized
 import random
 def build_data():
-    file="./date/index.json"
+    file="../date/index.json"
     test_data=[]
     with open(file,encoding="utf-8") as f:
         json_date=json.load(f)
@@ -30,7 +30,7 @@ def build_data():
                                remark,merchant,sign,timestamp,SubId))
         return test_data
 
-class yonlgi(unittest.TestCase):
+class yongli(unittest.TestCase):
     def setUp(self) -> None:
         self.api=Api()
     def tearDown(self):

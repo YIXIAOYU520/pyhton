@@ -32,7 +32,7 @@ def build_data():
                                remark,merchant,sign,timestamp,SubId,discountNumber,color,orderId,remissionId))
         return test_data
 
-class yonlgi(unittest.TestCase):
+class yongli(unittest.TestCase):
     def setUp(self) -> None:
         self.api=Api()
     def tearDown(self):
