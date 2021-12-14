@@ -1,0 +1,21 @@
+[
+  {
+    "plateNumber":"川NW9799",
+    "phone":"13111111111",
+    "name":"测试",
+    "parkId":"2c9f80877520b1540175b0bb7b0204cc",
+    "subDate":"2021-12-07",
+    "subTime":"13:00:00",
+    "startTime":"12:00:00",
+    "endTime":"14:00:00",
+    "remark":"xxx",
+    "merchant":"zlyy",
+    "sign":"53b40df94f93f76d04d4529af64d2036",
+    "timestamp":"20200803122312",
+    "SubId": "202112061524490025719508425",
+    "discountNumber": "202111318132454129",
+    "color": "蓝色",
+    "orderId": "蓝色",
+    "remissionId":"2c96e3677d6ffda2017d74dde2c7006e"
+  }
+]
