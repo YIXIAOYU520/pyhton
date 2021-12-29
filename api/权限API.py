@@ -6,6 +6,7 @@ class Api:
         self.url3 = "https://test.easy-parking.cn/easypark/third-service/space/queryStatus"
         self.url4 = "https://test.easy-parking.cn/easypark/third-service/space/count"
         self.url5 = "https://test.easy-parking.cn/easypark/cms-service/admin/remission/otherRemissionGrantV2"
+        self.url6 = "https://test.easy-parking.cn/easypark/parking-service/api-record/recordReport"
     def yuyue(self,plateNumber,phone,name,parkId,subDate,subTime,startTime,endTime,a,
               remark,merchant,sign,timestamp):
         json={
@@ -64,4 +65,18 @@ class Api:
             "sign": sign
         }
         return requests.post(url=self.url5,json=json)
-
+    def jcc(self,msgId,parkId,plateNumber,plateNumberColor,crossNum,crossName,passType,passTime,merchant,timestamp,sign):
+        json={
+            "msgId": msgId,
+            "parkId": parkId,
+            "plateNumber": plateNumber,
+            "plateNumberColor": plateNumberColor,
+            "crossNum": crossNum,
+            "crossName": crossName,
+            "passType": passType,
+            "passTime": passTime,
+            "merchant": merchant,
+            "timestamp": timestamp,
+            "sign": sign
+        }
+        return requests.post(url=self.url6,json=json)

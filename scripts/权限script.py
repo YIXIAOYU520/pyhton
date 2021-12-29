@@ -1,17 +1,15 @@
 import json
 import unittest
-import requests
-from api.zhongliuyiyuan import Api
+from api.权限API import Api
 from parameterized import parameterized
 import random
 def build_data():
-    file="../date/index.json"
+    file= "../date/权限.json"
     test_data=[]
     with open(file,encoding="utf-8") as f:
         json_date=json.load(f)
         for case_data in json_date:
-            b = random.randint(11111,99999)
-            plateNumber=b
+            plateNumber=case_data.get("plateNumber")
             phone=case_data.get("phone")
             name=case_data.get("name")
             parkId=case_data.get("parkId")
@@ -26,8 +24,12 @@ def build_data():
             sign=case_data.get("sign")
             timestamp=case_data.get("timestamp")
             SubId=case_data.get("SubId")
+            discountNumber=case_data.get("discountNumber")
+            color=case_data.get("color")
+            orderId=case_data.get("orderId")
+            remissionId=case_data.get("remissionId")
             test_data.append((plateNumber,phone,name,parkId,subDate,subTime,startTime,endTime,seriaNo,
-                               remark,merchant,sign,timestamp,SubId))
+                               remark,merchant,sign,timestamp,SubId,discountNumber,color,orderId,remissionId,))
         return test_data
 
 class yongli(unittest.TestCase):
@@ -36,8 +38,8 @@ class yongli(unittest.TestCase):
     def tearDown(self):
         print("后置处理")
     @parameterized.expand(build_data())
-    def test01(self,plateNumber,phone,name,parkId,subDate,subTime,startTime,endTime,
-               seriaNo,remark,merchant,sign,timestamp,SubId):
+    def test01(self,plateNumber,phone,name,parkId,subDate,subTime,startTime,endTime,seriaNo,
+                               remark,merchant,sign,timestamp,SubId,discountNumber,color,orderId,remissionId):
         reseon=self.api.yuyue(plateNumber,phone,name,parkId,subDate,subTime,startTime,endTime,seriaNo,
               remark,merchant,sign,timestamp)
         token = reseon.json()["content"]
@@ -63,4 +65,13 @@ class yongli(unittest.TestCase):
         reseon=self.api.shuliang(parkId,subDate,merchant,token,timestamp)
         print(reseon.json())
         self.assertIn("success", reseon.json().get("msg"))
+        reseon=self.api.jianmianquan(merchant,discountNumber,color,phone,orderId,remark,timestamp,plateNumber,remissionId,sign)
+        msg = reseon.json()["msg"]
+        if msg =="验签失败":
+            token = reseon.json()["sign"]
+            reseon = self.api.jianmianquan(merchant, discountNumber, color, phone, orderId, remark, timestamp,plateNumber, remissionId, token)
+            print(reseon.json())
+        else:
+            print("其他错误")
+
 

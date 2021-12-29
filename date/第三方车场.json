@@ -1,0 +1,14 @@
+[
+  {
+    "parkId":"2c96e36a7ba56fbe017cb58256570018",
+    "plateNumber":"川D12345",
+    "plateNumberColor":"BLUE",
+    "crossNum":"1",
+    "crossName":"西门入口",
+    "passType":0,
+    "passTime":"2021-12-29 10:38:01",
+    "merchant":"zlyy",
+    "timestamp":"421231",
+    "sign":"3eb1b10ba9a252bb4347b8de06c8eb22"
+  }
+]
